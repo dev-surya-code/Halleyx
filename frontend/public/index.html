@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#6366f1" />
+    <meta
+      name="description"
+      content="FlowForge — Production-grade Workflow Automation Platform"
+    />
+    <meta
+      name="keywords"
+      content="workflow automation, bpm, process automation, n8n, zapier alternative"
+    />
+    <!-- Security meta -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Bootstrap Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <title>ORBINEX — Workflow Automation</title>
+    <style>
+      /* Critical CSS for fast first paint */
+      body {
+        margin: 0;
+        background: #f0f4ff;
+        font-family:
+          "Inter",
+          -apple-system,
+          sans-serif;
+      }
+      [data-theme="dark"] body {
+        background: #080c14;
+      }
+      #root {
+        min-height: 100vh;
+      }
+      /* Splash loader */
+      .app-splash {
+        position: fixed;
+        inset: 0;
+        background: #0b0f1e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .app-splash-logo {
+        width: 64px;
+        height: 64px;
+        background: linear-gradient(135deg, #6366f1, #06b6d4);
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        box-shadow: 0 8px 32px rgba(99, 102, 241, 0.5);
+        animation: splash-pulse 1.5s ease-in-out infinite;
+      }
+      .app-splash-text {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+      @keyframes splash-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 32px rgba(99, 102, 241, 0.5);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 12px 48px rgba(99, 102, 241, 0.7);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript
+      >FlowForge requires JavaScript to run. Please enable JavaScript in your
+      browser.</noscript
+    >
+    <div id="root">
+      <!-- Splash shown before React hydrates -->
+      <div class="app-splash" id="splash">
+        <div class="app-splash-logo">⚡</div>
+        <div class="app-splash-text">FlowForge · Loading…</div>
+      </div>
+    </div>
+    <script>
+      // Remove splash once React mounts
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const s = document.getElementById("splash");
+          if (s) {
+            s.style.opacity = "0";
+            s.style.transition = "opacity 0.4s";
+            setTimeout(() => s.remove(), 400);
+          }
+        }, 300);
+      });
+    </script>
+  </body>
+</html>
